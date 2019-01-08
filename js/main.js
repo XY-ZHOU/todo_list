@@ -36,6 +36,27 @@ function showList(date, param, status) {
   list.setAttribute("status", status);
   LISTS.insertBefore(list, LISTS.childNodes[0]);
 }
+//list's listener of click
+LISTS.addEventListener('click', function(e) {
+  var event = event || window.event;
+  var target = event.target || event.srcElement;
+  //case was done
+  if (target.parentNode.className === 'list') {
+    let date = target.parentNode.getAttribute("date");
+    target.innerHTML = '<del>' + target.innerHTML + '</del>';
+    let content = {};
+    content.txt = target.innerHTML;
+    content.status = 'compeleted';
+    let contentStr = objToString(content);
+    localStorage.setItem(date, contentStr);
+    target.parentNode.setAttribute("status", 'compeleted');;
+  }
+  //delete one case
+  if (target.className === 'deleteList') {
+    deleteOneCase(target.parentNode);
+  }
+  leftItems.innerHTML = 'Left Items:' + countLeft();
+});
 
 function objToString(obj) {
   return JSON.stringify(obj);
