@@ -89,6 +89,18 @@ function todoOfActiveOrCompleteted(param) {
   leftItems.innerHTML = 'Left Items:' + countLeft();
 }
 
+function countLeft() {
+  let leftIndex = 0;
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    let value = stringToObject(localStorage[key]);
+    if (Object.values(value).includes('active')) {
+      leftIndex++;
+    }
+  }
+  return leftIndex;
+}
+
 function showClearCompletedBtn() {
   let leftIndex = countLeft();
   if (leftIndex < 2) {
