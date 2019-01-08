@@ -28,6 +28,15 @@ function getNewTodo() {
   leftItems.innerHTML = 'Left Items:' + countLeft();
 }
 
+function showList(date, param, status) {
+  let list = document.createElement('div');
+  list.innerHTML = '<p>' + param + '</p><a href="#" class="deleteList">X</a>';
+  list.classList.add('list');
+  list.setAttribute("date", date);
+  list.setAttribute("status", status);
+  LISTS.insertBefore(list, LISTS.childNodes[0]);
+}
+
 function objToString(obj) {
   return JSON.stringify(obj);
 }
