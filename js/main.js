@@ -27,3 +27,11 @@ function getNewTodo() {
   }
   leftItems.innerHTML = 'Left Items:' + countLeft();
 }
+
+function objToString(obj) {
+  return JSON.stringify(obj);
+}
+
+function stringToObject(str) {
+  return JSON.parse(str);
+}
