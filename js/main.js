@@ -73,6 +73,20 @@ function showClearCompletedBtn() {
   }
 }
 
+function clearCompeletedCases() {
+  LISTS.innerHTML = '';
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    let value = stringToObject(localStorage[key]);
+    if (Object.values(value).includes('compeleted')) {
+      localStorage.removeItem(key);
+    } else {
+      showList(key, value.txt, value.status);
+    }
+  }
+  leftItems.innerHTML = 'Left Items:' + countLeft();
+}
+
 function objToString(obj) {
   return JSON.stringify(obj);
 }
