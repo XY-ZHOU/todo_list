@@ -58,6 +58,12 @@ LISTS.addEventListener('click', function(e) {
   leftItems.innerHTML = 'Left Items:' + countLeft();
 });
 
+function deleteOneCase(param) {
+  let date = param.getAttribute("date");
+  param.parentNode.removeChild(param);
+  localStorage.removeItem(date);
+}
+
 function objToString(obj) {
   return JSON.stringify(obj);
 }
