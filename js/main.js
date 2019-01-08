@@ -64,6 +64,15 @@ function deleteOneCase(param) {
   localStorage.removeItem(date);
 }
 
+function showClearCompletedBtn() {
+  let leftIndex = countLeft();
+  if (leftIndex < 2) {
+    clearCompleted.classList.add('disappear');
+  } else {
+    clearCompleted.classList.remove('disappear');
+  }
+}
+
 function objToString(obj) {
   return JSON.stringify(obj);
 }
