@@ -100,6 +100,20 @@ function countLeft() {
   }
   return leftIndex;
 }
+BTNS.addEventListener('click', function(e) {
+  var event = event || window.event;
+  var target = event.target || event.srcElement;
+  if (target.className === 'btn') {
+    target.classList.add('selected');
+    let siblings = Array.from(target.parentNode.children);
+    for (let elem of siblings) {
+      console.log(elem, target, elem !== target);
+      if (elem !== target) {
+        elem.classList.remove('selected');
+      }
+    }
+  }
+});
 
 function showClearCompletedBtn() {
   let leftIndex = countLeft();
