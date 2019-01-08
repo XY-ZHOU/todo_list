@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>
+      Todo List
+    </title>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <script src="../js/main.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="inputBox">
+        <label for="inputTxt">
+          添加待办事项：
+        </label>
+        <input  id="inputTxt" type="text"  class="txt" onkeypress="addTodo()"/>
+      </div>
+      <div class="caseLists" id="lists"></div>
+      <div class="leftItem" id="leftItems"></div>
+      <div class="buttonBox" id="btns">
+        <button id="all" class="btn selected" onclick="allTodo()">
+          ALL
+        </button>
+        <button id="active" class="btn" onclick="todoOfActiveOrCompleteted('active')">
+          ACTIVAE
+        </button>
+        <button id="compeleted" class="btn" onclick="todoOfActiveOrCompleteted('compeleted')">
+          COMPELETED
+        </button>
+        <button id="clearCompleted" class="btn " onclick="clearCompeletedCases()">
+          Clear Completed
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
