@@ -76,6 +76,19 @@ function allTodo() {
   leftItems.innerHTML = 'Left Items:' + countLeft();
 }
 
+function todoOfActiveOrCompleteted(param) {
+  btnStatus = param;
+  LISTS.innerHTML = '';
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    let value = stringToObject(localStorage[key]);
+    if (Object.values(value).includes(param)) {
+      showList(key, value.txt, param);
+    }
+  }
+  leftItems.innerHTML = 'Left Items:' + countLeft();
+}
+
 function showClearCompletedBtn() {
   let leftIndex = countLeft();
   if (leftIndex < 2) {
