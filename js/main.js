@@ -26,7 +26,7 @@ function getNewTodo() {
   if (btnStatus != 'compeleted') {
     showList(date, INPUTTXT.value, caseStatus);
   }
-  leftItems.innerHTML = 'Left Items:' + countLeft();
+  showLeftAndClearCoCompleteted();
 }
 
 function showList(date, param, status) {
@@ -56,7 +56,7 @@ LISTS.addEventListener('click', function(e) {
   if (target.className === 'deleteList') {
     deleteOneCase(target.parentNode);
   }
-  leftItems.innerHTML = 'Left Items:' + countLeft();
+  showLeftAndClearCoCompleteted();
 });
 
 function deleteOneCase(param) {
@@ -70,10 +70,9 @@ function allTodo() {
   for (let i = 0; i < localStorage.length; i++) {
     let key = localStorage.key(i);
     let value = stringToObject(localStorage[key]);
-    //console.log(key, localStorage[key]);
     showList(key, value.txt, value.status);
   }
-  leftItems.innerHTML = 'Left Items:' + countLeft();
+  showLeftAndClearCoCompleteted();
 }
 
 function todoOfActiveOrCompleteted(param) {
@@ -86,7 +85,29 @@ function todoOfActiveOrCompleteted(param) {
       showList(key, value.txt, param);
     }
   }
-  leftItems.innerHTML = 'Left Items:' + countLeft();
+  showLeftAndClearCoCompleteted();
+}
+
+function clearCompeletedCases() {
+  LISTS.innerHTML = '';
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    let value = stringToObject(localStorage[key]);
+    if (Object.values(value).includes('compeleted')) {
+      localStorage.removeItem(key);
+    } else {
+      showList(key, value.txt, value.status);
+    }
+  }
+  showLeftAndClearCoCompleteted();
+}
+
+function showClearCompletedBtn(leftIndex) {
+  if (leftIndex < 2) {
+    clearCompleted.classList.add('disappear');
+  } else {
+    clearCompleted.classList.remove('disappear');
+  }
 }
 
 function countLeft() {
@@ -99,6 +120,12 @@ function countLeft() {
     }
   }
   return leftIndex;
+}
+
+function showLeftAndClearCoCompleteted() {
+  let leftIndex = countLeft();
+  leftItems.innerHTML = 'Left Items:' + leftIndex;
+  showClearCompletedBtn(leftIndex);
 }
 BTNS.addEventListener('click', function(e) {
   var event = event || window.event;
@@ -114,29 +141,6 @@ BTNS.addEventListener('click', function(e) {
     }
   }
 });
-
-function showClearCompletedBtn() {
-  let leftIndex = countLeft();
-  if (leftIndex < 2) {
-    clearCompleted.classList.add('disappear');
-  } else {
-    clearCompleted.classList.remove('disappear');
-  }
-}
-
-function clearCompeletedCases() {
-  LISTS.innerHTML = '';
-  for (let i = 0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
-    let value = stringToObject(localStorage[key]);
-    if (Object.values(value).includes('compeleted')) {
-      localStorage.removeItem(key);
-    } else {
-      showList(key, value.txt, value.status);
-    }
-  }
-  leftItems.innerHTML = 'Left Items:' + countLeft();
-}
 
 function objToString(obj) {
   return JSON.stringify(obj);
