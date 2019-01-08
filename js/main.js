@@ -5,6 +5,7 @@ const BTNS = document.getElementById('btns');
 let btnStatus = 'all';
 let caseStatus = 'active';
 let date;
+allTodo();
 
 function addTodo() {
   if (event.keyCode == 13) {
@@ -62,6 +63,17 @@ function deleteOneCase(param) {
   let date = param.getAttribute("date");
   param.parentNode.removeChild(param);
   localStorage.removeItem(date);
+}
+
+function allTodo() {
+  LISTS.innerHTML = '';
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    let value = stringToObject(localStorage[key]);
+    //console.log(key, localStorage[key]);
+    showList(key, value.txt, value.status);
+  }
+  leftItems.innerHTML = 'Left Items:' + countLeft();
 }
 
 function showClearCompletedBtn() {
