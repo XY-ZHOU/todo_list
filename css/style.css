@@ -1,63 +1,55 @@
-ul, li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
 .container {
-  width: 500px;
+  width: 460px;
   margin: 20px auto;
   padding: 20px;
-  background-color: rgba(190, 190, 190, 0.5);
+  background-color: #BEBEBE;
+  opacity: 0.7;
   border-radius: 20px;
 }
 
+.title {
+  color: #fff;
+  font-size: 48px;
+  text-align: center;
+}
+
 .inputBox {
-  width: 360px;
-  height: 100px;
-  margin: 0 auto;
+  width: 350px;
+  height: 36px;
+  margin: 20px auto;
 }
 
 .txt {
-  margin-top: 5px;
-  width: 360px;
-  height: 28px;
+  width: 350px;
+  height: 30px;
   border: 2px solid #8b8b8b;
 }
 
 .list {
-  padding: 10px;
+  padding: 10px 20px;
   margin: 10px 0px;
   border-radius: 12px;
+  background-color: #D8EDCA;
+  position: relative;
 }
 
-.list[status='active'] {
-  background-color: #f4edb8;
-}
-
-.list[status='compeleted'] {
-  background-color: #d8edca;
-  color: #8b8b8b;
-  text-decoration: line-through;
-}
-
-.list p {
-  margin: 2px 0px;
-  padding-left: 15px;
-  width: 420px;
-  display: inline-block;
-}
-
-.deleteList {
+.deleteBtn {
   color: #000;
-  right: 10px;
+  background-color: #D8EDCA;
+  position: absolute;
+  right: 25px;
+  font-size: 16px;
+  border: none;
   display: none;
 }
 
-.list:hover .deleteList {
+.list:hover .deleteBtn {
   display: inline-block;
+}
+
+.done {
+  color: #808080;
+  text-decoration: line-through;
 }
 
 .leftItem {
@@ -66,15 +58,16 @@ a {
 }
 
 .btn {
+  min-width: 60px;
   padding: 5px;
   margin: 7px;
   display: inline-block;
 }
 
-.disappear {
+.hide {
   display: none;
 }
 
 .selected {
-  background-color: #f7c496;
+  background-color: #D8EDCA;
 }
