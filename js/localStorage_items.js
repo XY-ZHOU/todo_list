@@ -67,4 +67,7 @@ class StorageItems {
       }
     }
   }
+  countLeft() {
+    return this.getActiveTodo().length;
+  }
 }
