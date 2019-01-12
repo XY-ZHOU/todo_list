@@ -47,4 +47,15 @@ class StorageItems {
     }
     return activeTodo;
   }
+  getCompletedTodo() {
+    let completedTodo = [];
+    for (let i = 0; i < this.storageItems.length; i++) {
+      let key = this.storageItems.key(i);
+      let value = JSON.parse(this.storageItems[key]);
+      if (value.isCompleted === true) {
+        completedTodo.push(value);
+      }
+    }
+    return completedTodo;
+  }
 }
