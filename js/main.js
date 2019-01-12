@@ -23,7 +23,6 @@ function showList(newTodo) {
   list.innerHTML = '<input type="checkbox" /><label >' + newTodo.content + '</label><button class="deleteBtn">X</button>';
   list.children[0].setAttribute('value', newTodo.content);
   if (newTodo.isCompleted == true) {
-    console.log(list.children);
     list.children[0].setAttribute('checked', true);
     list.children[1].classList.add('done');
   }
@@ -82,7 +81,6 @@ LISTS.addEventListener('click', function(e) {
   var event = event || window.event;
   var target = event.target || event.srcElement;
   //case was done
-  console.log(target);
   if (target.className === 'list' || target.parentNode.className === 'list') {
     finishTodo(target);
   }
@@ -109,7 +107,6 @@ BTNS.addEventListener('click', function(e) {
     target.classList.add('selected');
     let siblings = Array.from(target.parentNode.children);
     for (let elem of siblings) {
-      console.log(elem, target, elem !== target);
       if (elem !== target) {
         elem.classList.remove('selected');
       }
