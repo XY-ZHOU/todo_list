@@ -2,6 +2,7 @@ const LISTS = document.getElementById('lists');
 const BTNS = document.getElementById('btns');
 let btnStatus;
 let storageItems = new StorageItems(localStorage);
+allTodos();
 
 function addTodo(event) {
   let input = document.getElementById('inputTxt');
@@ -27,4 +28,14 @@ function showList(newTodo) {
     list.children[1].classList.add('done');
   }
   LISTS.insertBefore(list, LISTS.childNodes[0]);
+}
+
+function allTodos() {
+  btnStatus = 'all';
+  LISTS.innerHTML = '';
+  let allItems = storageItems.getAllTodo();
+  for (let elem of allItems) {
+    showList(elem);
+  }
+  showLeftAndClearCoCompleteted();
 }
