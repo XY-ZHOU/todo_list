@@ -49,3 +49,13 @@ function activeTodos() {
   }
   showLeftAndClearCoCompleteted();
 }
+
+function completedTodos() {
+  btnStatus = 'completed';
+  LISTS.innerHTML = '';
+  let completedItems = storageItems.getCompletedTodo();
+  for (let elem of completedItems) {
+    showList(elem);
+  }
+  showLeftAndClearCoCompleteted();
+}
