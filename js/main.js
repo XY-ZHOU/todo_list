@@ -15,3 +15,16 @@ function addTodo(event) {
   input.value = '';
   showLeftAndClearCoCompleteted();
 }
+
+function showList(newTodo) {
+  let list = document.createElement('div');
+  list.classList.add('list');
+  list.innerHTML = '<input type="checkbox" /><label >' + newTodo.content + '</label><button class="deleteBtn">X</button>';
+  list.children[0].setAttribute('value', newTodo.content);
+  if (newTodo.isCompleted == true) {
+    console.log(list.children);
+    list.children[0].setAttribute('checked', true);
+    list.children[1].classList.add('done');
+  }
+  LISTS.insertBefore(list, LISTS.childNodes[0]);
+}
