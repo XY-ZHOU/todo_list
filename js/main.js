@@ -77,3 +77,28 @@ function clearCompeletedTodos() {
   storageItems.clearCompletedTodo();
   showLeftAndClearCoCompleteted();
 }
+//list's listener of click
+LISTS.addEventListener('click', function(e) {
+  var event = event || window.event;
+  var target = event.target || event.srcElement;
+  //case was done
+  console.log(target);
+  if (target.className === 'list' || target.parentNode.className === 'list') {
+    finishTodo(target);
+  }
+  //delete one case
+  if (target.className === 'deleteBtn') {
+    let content = target.previousElementSibling.innerText.trim();;
+    target.parentNode.parentNode.removeChild(target.parentNode);
+    storageItems.deleteATodo(content);
+  }
+  showLeftAndClearCoCompleteted();
+});
+
+function finishTodo(target) {
+  let parentNode = target.className === 'list' ? target : target.parentNode;
+  let content = parentNode.children[1].innerText.trim();
+  storageItems.finishATodo(content);
+  parentNode.children[0].setAttribute("checked", true);
+  parentNode.children[1].classList.add('done');
+}
