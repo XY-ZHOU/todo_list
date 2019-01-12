@@ -39,3 +39,13 @@ function allTodos() {
   }
   showLeftAndClearCoCompleteted();
 }
+
+function activeTodos() {
+  btnStatus = 'active';
+  LISTS.innerHTML = '';
+  let activeItems = storageItems.getActiveTodo();
+  for (let elem of activeItems) {
+    showList(elem);
+  }
+  showLeftAndClearCoCompleteted();
+}
