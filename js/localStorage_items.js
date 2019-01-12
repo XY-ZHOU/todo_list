@@ -58,4 +58,13 @@ class StorageItems {
     }
     return completedTodo;
   }
+  clearCompletedTodo() {
+    for (let i = 0; i < this.storageItems.length; i++) {
+      let key = this.storageItems.key(i);
+      let value = JSON.parse(this.storageItems[key]);
+      if (value.isCompleted === true) {
+        this.storageItems.removeItem(key);
+      }
+    }
+  }
 }
