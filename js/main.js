@@ -71,3 +71,9 @@ function showLeftAndClearCoCompleteted() {
     clearCompleted.classList.remove('hide');
   }
 }
+
+function clearCompeletedTodos() {
+  LISTS.innerHTML = '';
+  storageItems.clearCompletedTodo();
+  showLeftAndClearCoCompleteted();
+}
