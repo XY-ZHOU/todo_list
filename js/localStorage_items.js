@@ -16,4 +16,14 @@ class StorageItems {
       }
     }
   }
+  deleteATodo(content) {
+    for (let i = 0; i < this.storageItems.length; i++) {
+      let key = this.storageItems.key(i);
+      let value = JSON.parse(this.storageItems[key]);
+      console.log(value.content.trim(), content, value.content.trim() === content)
+      if (value.content.trim() === content) {
+        this.storageItems.removeItem(key);
+      }
+    }
+  }
 }
