@@ -59,3 +59,15 @@ function completedTodos() {
   }
   showLeftAndClearCoCompleteted();
 }
+
+function showLeftAndClearCoCompleteted() {
+  let leftIndex = storageItems.countLeft();
+  let leftItems = document.getElementById('leftItems');
+  let clearCompleted = document.getElementById('clearCompleted');
+  leftItems.innerHTML = 'Left Items:' + leftIndex;
+  if (btnStatus == 'active' || (btnStatus != 'active' && leftIndex < 2)) {
+    clearCompleted.classList.add('hide');
+  } else {
+    clearCompleted.classList.remove('hide');
+  }
+}
